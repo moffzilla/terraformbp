@@ -1,7 +1,7 @@
 # Create a new instance of the latest Ubuntu 14.04 on an
 # t2.micro node with an AWS Tag naming it "HelloWorld"
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 data "aws_ami" "ubuntu" {
