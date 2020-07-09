@@ -1,32 +1,30 @@
+# Create a new instance of the latest Ubuntu 14.04 on an
+# t2.micro node with an AWS Tag naming it "HelloWorld"
 provider "aws" {
-    version = "~> 2.0"
-    region="us-east-1"
+  region = "us-west-2"
 }
 
-variable "instance_type" {
-  description = "AWS instance type"
-  default     = "t2.micro"
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
 }
 
-variable "department" {
-  description = "Department tag"
-}
+resource "aws_instance" "web" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
 
-resource "random_string" "random" {
-    length = 16
-    special = true
-    override_special = "/@£$"
-
-    provisioner "local-exec" {
-       command = "echo sleeping for 10 mins; sleep 600; echo slept"
-    }
-}
-
-resource "aws_instance" "machine1" {
-    depends_on = [
-        random_string.random,
-       ]
-    ami           = "ami-04b9e92b5572fa0d1"
-    instance_type = "t2.micro"
-    availability_zone = "us-east-1b"
+  tags = {
+    Name = "HelloWorld"
+  }
 }
