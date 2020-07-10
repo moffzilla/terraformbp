@@ -32,11 +32,11 @@ resource "aws_instance" "machine2" {
 }
 
 resource "aws_network_interface_sg_attachment" "sg_attachment1" {
-  security_group_id    = "sg-8e01a2fb"
+  security_group_id    = "default"
   network_interface_id = "${aws_instance.machine1.primary_network_interface_id}"
 }
 
 resource "aws_network_interface_sg_attachment" "sg_attachment2" {
-  security_group_id    = "sg-aa750ddc"
+  security_group_id    = "default"
   network_interface_id = "${aws_instance.machine2.primary_network_interface_id}"
 }
