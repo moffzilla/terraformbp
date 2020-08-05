@@ -1,7 +1,7 @@
 provider "aws" {
     version = "2.69.0"
     region="us-east-1"
-)
+}
 
 variable "instance_type" {
   description = "AWS instance type"
@@ -20,7 +20,7 @@ resource "aws_instance" "machine1" {
     tags = {
       "type" = var.myTag
     }
-}
+)
 
 resource "aws_instance" "machine2" {
     ami           = "ami-04b9e92b5572fa0d1"
