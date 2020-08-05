@@ -1,6 +1,4 @@
 provider "aws" {
-    version = "2.69.0"
-    region="us-east-1"
 }
 
 variable "instance_type" {
@@ -14,7 +12,8 @@ variable "myTag" {
 }
 
 resource "aws_instance" "machine1" {
-    instance_type = "t2.microbio"
+    ami           = "ami-04b9e92b5572fa0d1"
+    instance_type = "t2.micro"
     availability_zone = "us-east-1b"
     tags = {
       "type" = var.myTag
