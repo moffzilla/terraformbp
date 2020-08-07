@@ -14,7 +14,7 @@ variable "myTag" {
 }
 
 resource "aws_instance" "machine1" {
-    ami           = "ami-04b9e92b5572fa0d1"
+    ami           = "ami-0a63cd87767e10ed4"
     instance_type = "t2.micro"
     availability_zone = "us-west-1b"
     tags = {
@@ -23,7 +23,7 @@ resource "aws_instance" "machine1" {
 }
 
 resource "aws_instance" "machine2" {
-    ami           = "ami-04b9e92b5572fa0d1"
+    ami           = "ami-0a63cd87767e10ed4"
     instance_type = "t2.micro"
     availability_zone = "us-west-1b"
     tags = {
